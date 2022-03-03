@@ -490,11 +490,11 @@ fabric.properties
 # Sonarlint plugin
 # https://plugins.jetbrains.com/plugin/7973-sonarlint
 .idea/**/sonarlint/
-
+**.idea/**/sonarlint/
 # SonarQube Plugin
 # https://plugins.jetbrains.com/plugin/7238-sonarqube-community-plugin
 .idea/**/sonarIssues.xml
-
+**.idea/**/sonarIssues.xml
 # Markdown Navigator plugin
 # https://plugins.jetbrains.com/plugin/7896-markdown-navigator-enhanced
 .idea/**/markdown-navigator.xml
@@ -755,6 +755,8 @@ cython_debug/
 # StyleCop
 
 # Files built by Visual Studio
+
+**.idea
 
 # Chutzpah Test files
 
