@@ -1,16 +1,15 @@
+using CommandsService.AsyncDataServices;
+using CommandsService.Data;
+using CommandsService.EventProcessing;
+using CommandsService.SyncDataServices.Grpc;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CommandsService
 {
@@ -23,11 +22,19 @@ namespace CommandsService
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        // This method gets called by the runtime. Use this method to add dotnet services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("InMem"));
+            services.AddScoped<ICommandRepo, CommandRepo>();
+            services.AddSingleton<IEventProcessor, EventProcessor>();
+            services.AddScoped<IPlatformDataClient, PlatformDataClient>();
+
             services.AddControllers();
+            services.AddHostedService<MessageBusSubscriber>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CommandsService", Version = "v1" });
@@ -54,6 +61,7 @@ namespace CommandsService
             {
                 endpoints.MapControllers();
             });
+            PrepDb.PrepPopulation(app);
         }
     }
 }
