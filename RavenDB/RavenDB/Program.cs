@@ -33,6 +33,7 @@ class Program
 
         return store;
     }
+
     static void Main()
     {
         var keepgoing = true;
@@ -169,9 +170,8 @@ class Program
         using var session = documentStore.OpenSession();
         Console.Write("Enter Customer number : ");
         var customer = session.Load<Customer>(Console.ReadLine());
-        //*************************************************
-        // SÅ vil vi lige ændre fornavn på employee
-        Console.Write("Nyt Fornavn");
+
+        Console.Write("New First Name");
         customer.FirstName = Console.ReadLine();
         session.SaveChanges();
     }
