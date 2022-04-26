@@ -8,12 +8,10 @@ internal class Program
 
     private static void Main(string[] args)
     {
-        var conn1 = new SqlConnection("Server=192.168.0.100; Database=CopyDb1; User ID=elonim; Password=XXXXXXXXXXXXXXXXXXX; MultipleActiveResultSets=True;");
+        var conn1 = new SqlConnection("Server=192.168.0.100; Database=CopyDb2; User ID=elonim; Password=XXXXXXXXXXXXXXXXXXX; MultipleActiveResultSets=True;");
         var conn2 = new SqlConnection("Server=192.168.0.100; Database=CopyDb2; User ID=elonim; Password=XXXXXXXXXXXXXXXXXXX; MultipleActiveResultSets=True;");
-
-
-        //AddPersonsToDatabaseUsingDapper(conn);
-        ReadPersonsFromDatabaseUsingDapper(conn1);
+        //AddPersonsToDatabaseUsingDapper(conn1);
+        //ReadPersonsFromDatabaseUsingDapper(conn1);
         //ReadFromDB1InsertToDB2(conn1, conn2);
     }
 
