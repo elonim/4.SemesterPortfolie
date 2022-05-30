@@ -56,13 +56,15 @@ class Program
 
         }
 
-        Console.WriteLine("");
-    }
+
+
+            Console.WriteLine("");
+        }
 
     public static int DetectPeriod(MLContext mlContext, IDataView phoneCalls)
-    {
-        var period = mlContext.AnomalyDetection.DetectSeasonality(phoneCalls, nameof(PhoneCallsData.value));
-        Console.WriteLine("Period of the series is: {0}.", period);
-        return period;
+        {
+            var period = mlContext.AnomalyDetection.DetectSeasonality(phoneCalls, nameof(PhoneCallsData.value));
+            Console.WriteLine("Period of the series is: {0}.", period);
+            return period;
+        }
     }
-}
