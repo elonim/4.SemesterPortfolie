@@ -1,6 +1,6 @@
 # Portfolie
 This is a portfolio of small sample applications for my 4th semester
-everything is in main because this repository is only ment ad a portfolio for my teachers
+everything in here is only ment as a portfolio for my teachers
 
 26/04/2020
 leget lidt mere med python for at forstå sproget bedre og hvordan objekter bliver håndteret derved har leg lavet et minesweeper spil efter en tutorial
